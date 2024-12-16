@@ -1,0 +1,945 @@
+:root {
+    --primary-black: #000000;
+    --primary-white: #FFFFFF;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--primary-black);
+    background: var(--primary-white);
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.main-title {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Layout */
+section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.1) 45%, 
+                      rgba(255,255,255,0.1) 55%, transparent 55%);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+
+.profile-container {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto 3rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.profile-image-large {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.profile-image-large:hover {
+    transform: scale(1.05);
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 2rem 0;
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+
+/* Project Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* Impact Pillars */
+.pillars-list {
+    list-style: none;
+    padding: 0;
+}
+
+.pillars-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.pillars-list li:hover {
+    transform: translateX(10px);
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    background: #000;
+    color: #fff;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    section {
+        padding: 3rem 1rem;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+}
+
+.loaded {
+    opacity: 1;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: #000;
+    z-index: 1000;
+    transition: width 0.1s ease;
+}
+
+/* Hover Effects */
+a {
+    color: #000;
+    text-decoration: none;
+    position: relative;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background: #000;
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* Contact Section */
+.contact-section {
+    background: #f8f8f8;
+    padding: 5rem 2rem;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.submit-btn {
+    background: #000;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Enhanced TIMMY Animation */
+.animated-timmy {
+    display: inline-block;
+    font-size: 5rem; /* Even larger */
+    font-weight: 900;
+    color: #000;
+    margin-left: 10px;
+}
+
+.animated-timmy span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: letterPop 0.5s forwards;
+}
+
+@keyframes letterPop {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.5);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Rotating Titles in Black */
+.rotating-text {
+    color: #000;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 200px;
+    transition: opacity 0.3s ease;
+}
+
+/* Clean, Modern Introduction Styles */
+.intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: left;
+}
+
+.intro-heading {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: #000;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.nickname-container {
+    font-size: 2.5rem;
+    margin: 1.5rem 0;
+    color: #000;
+}
+
+.timmy-text {
+    font-weight: 900;
+    font-size: 3rem;
+    color: #000;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.role-text {
+    font-size: 2rem;
+    color: #000;
+    margin: 2rem 0;
+    font-weight: 500;
+}
+
+.intro-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 2rem 0;
+    color: #333;
+    max-width: 650px;
+}
+
+.intro-mission {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 2rem 0;
+    color: #333;
+    max-width: 650px;
+}
+
+/* Simple Profile Image */
+.profile-container {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto 3rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile-image-large {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Services Section Styles */
+.services-section {
+    padding: 2rem 2rem;
+    background: #fff;
+    margin-top: -2rem;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.services-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #000;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.service-card {
+    background: #fff;
+    padding: 2rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.service-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Animation Classes */
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Updated Header Styles */
+.header-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 2rem;
+}
+
+/* Profile Image Container */
+.profile-container {
+    width: auto;
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-image-large {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Text Content Below Image */
+.intro-text {
+    width: 100%;
+    padding: 2rem 4rem;
+    text-align: center;
+}
+
+.intro-heading {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    color: #000;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.nickname-container {
+    font-size: 2rem;
+    margin: 1.5rem 0;
+    color: #000;
+}
+
+.timmy-text {
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #000;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .profile-container {
+        height: 60vh;
+    }
+
+    .intro-text {
+        padding: 2rem;
+    }
+
+    .intro-heading {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        height: 50vh;
+    }
+
+    .intro-heading {
+        font-size: 2.8rem;
+    }
+}
+
+/* Updated Role List Styles with larger font and bold text */
+.role-container {
+    padding: 1rem 0;
+    margin: 0 0 2rem 0; /* Adjusted margin to keep under header */
+    overflow: hidden;
+    width: 100%;
+    position: relative; /* Ensures proper positioning */
+}
+
+.role-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2.5rem; /* Increased gap for larger text */
+    animation: slideLeft 20s linear infinite;
+    white-space: nowrap;
+}
+
+.role-list li {
+    color: #000;
+    font-size: 2.5rem; /* Increased font size */
+    font-weight: 700; /* Made text bolder */
+    padding: 0.25rem 0;
+    flex-shrink: 0;
+}
+
+/* Bullet points styling */
+.role-list li:nth-child(even) {
+    font-weight: 400; /* Makes bullets less bold */
+}
+
+/* Ensure proper spacing after header */
+.intro-description {
+    margin-top: 4rem; /* Increased space after role list */
+    clear: both;
+    margin-bottom: 2rem;
+}
+
+/* Animation remains the same */
+@keyframes slideLeft {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .header-flex {
+        flex-direction: column;
+    }
+
+    .profile-container {
+        width: 100%;
+        height: 50vh; /* Square on mobile */
+    }
+
+    .intro-text {
+        width: 100%;
+        height: auto;
+        padding: 2rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-heading {
+        font-size: 2.8rem;
+    }
+
+    .role-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* Navigation */
+.nav-menu {
+    background: var(--primary-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-menu a {
+    color: var(--primary-white);
+    font-weight: 600;
+    margin: 0 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a.active {
+    color: var(--primary-white);
+    border-bottom: 2px solid var(--primary-white);
+}
+
+.nav-menu a:hover {
+    color: var(--primary-white);
+    opacity: 0.7;
+}
+
+/* Headers and Titles */
+.intro-heading {
+    color: var(--primary-black);
+    font-weight: 800;
+}
+
+.timmy-text {
+    color: var(--primary-black);
+    font-weight: 900;
+}
+
+/* Role List */
+.role-list li {
+    color: var(--primary-black);
+    font-weight: 700;
+}
+
+.role-list li:nth-child(even) {
+    color: var(--primary-black);
+}
+
+/* Services Section */
+.services-title {
+    color: var(--primary-black);
+}
+
+.service-card {
+    border: 2px solid var(--primary-black);
+    transition: transform 0.3s ease;
+    background: var(--primary-white);
+}
+
+.service-card:hover {
+    background: var(--primary-black);
+    color: var(--primary-white);
+    transform: translateY(-5px);
+}
+
+.service-card h3 {
+    color: var(--primary-black);
+}
+
+/* Work Page */
+.work-item h3 {
+    color: var(--primary-black);
+}
+
+.work-item:hover {
+    background: var(--primary-black);
+    color: var(--primary-white);
+}
+
+/* Bio Page */
+.bio-content h1 {
+    color: var(--primary-black);
+}
+
+.bio-section h2 {
+    color: var(--primary-black);
+}
+
+.experience-list li:before {
+    color: var(--primary-black);
+}
+
+/* Buttons and Interactive Elements */
+button, .submit-btn {
+    background: var(--primary-black);
+    color: var(--primary-white);
+}
+
+button:hover, .submit-btn:hover {
+    background: var(--primary-white);
+    color: var(--primary-black);
+    border: 2px solid var(--primary-black);
+}
+
+/* Links */
+a {
+    color: var(--primary-black);
+}
+
+a:hover {
+    color: var(--primary-black);
+    opacity: 0.7;
+}
+
+/* Section Highlights */
+.highlight-text {
+    color: var(--primary-black);
+}
+
+/* Responsive Design Colors */
+@media (max-width: 768px) {
+    .nav-menu {
+        background: var(--primary-black);
+    }
+    
+    .nav-menu a {
+        color: var(--primary-white);
+    }
+}
+
+/* Experience List Styles */
+.experience-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.experience-list li {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--primary-white);
+    border: 1px solid var(--primary-black);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.experience-list li p {
+    margin: 0.5rem 0 0;
+    color: var(--primary-black);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Collabs Section Styles */
+.collabs-section {
+    padding: 2rem;
+    background: var(--primary-white);
+    text-align: center;
+}
+
+.collabs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.collab-item {
+    padding: 1rem;
+    border: 1px solid var(--primary-black);
+    background: var(--primary-white);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.collab-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-black);
+}
+
+.collab-item p {
+    font-size: 1rem;
+    color: var(--primary-black);
+}
+
+.collab-item img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+/* Skills Section Styles */
+.skills-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.skills-list li {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-black);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-black);
+    border-radius: 5px;
+    background: var(--primary-white);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Ensure content is visible over the video */
+.content {
+    position: relative;
+    z-index: 1;
+    color: var(--primary-black);
+    background: var(--primary-white); /* Change to solid background if needed */
+    padding: 2rem;
+}
+
+/* Additional Text Styles */
+.collabs-note {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: var(--primary-black);
+    text-align: center;
+}
+
+.work-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.work-item {
+    display: flex;
+    border: 1px solid var(--primary-black);
+    background: var(--primary-white);
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.work-item:hover {
+    background: var(--primary-white);
+}
+
+.work-content {
+    display: flex;
+    width: 100%;
+}
+
+.work-item img {
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+}
+
+.work-text {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.work-text h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-black);
+    transition: color 0.3s ease;
+}
+
+.work-text p {
+    font-size: 0.9rem;
+    color: var(--primary-black);
+    transition: color 0.3s ease;
+}
+
+.work-item:hover .work-text h3,
+.work-item:hover .work-text p {
+    color: var(--primary-black);
+}
